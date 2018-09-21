@@ -8,22 +8,22 @@
 # Contributor: Christian Schwarz <me et cschwarz punkt com>
 
 pkgname=apt-cacher-ng
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=2
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('custom')
 depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl')
 makedepends=('cmake')
-source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.orig.tar.xz"
+source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.${pkgrel}.orig.tar.xz"
         'acng.conf.patch'
         'apt-cacher-ng.service.patch'
         'apt-cacher-ng.tmpfile'
 )
 
 backup=('etc/apt-cacher-ng/acng.conf')
-md5sums=('9cd2bea95833debc864957aa89d13850'
+md5sums=('452f694d127705b9834c9d46fe1f559f'
          '180e14417a70642a53c77bcb6a7b7292'
          '9645bdcd30a6b0ddc956c2a48c7a27ff'
          '29979b8064ff52aa24017b42c37e6bfb')
@@ -32,7 +32,7 @@ install=apt-cacher-ng.install
 
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}.${pkgrel}
   rm -rf builddir
   mkdir -p builddir
   src=$PWD
@@ -48,7 +48,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}.${pkgrel}
 
   make -C builddir install DESTDIR=${pkgdir}
 
@@ -57,8 +57,8 @@ package() {
 
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/builddir/systemd/apt-cacher-ng.service ${pkgdir}/usr/lib/systemd/system/apt-cacher-ng.service
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/builddir/systemd/apt-cacher-ng.conf ${pkgdir}/usr/lib/tmpfiles.d/apt-cacher-ng.conf
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}.${pkgrel}/builddir/systemd/apt-cacher-ng.service ${pkgdir}/usr/lib/systemd/system/apt-cacher-ng.service
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}.${pkgrel}/builddir/systemd/apt-cacher-ng.conf ${pkgdir}/usr/lib/tmpfiles.d/apt-cacher-ng.conf
   mkdir -p ${pkgdir}/var/log/apt-cacher-ng
   mkdir -p ${pkgdir}/var/cache/apt-cacher-ng
 
