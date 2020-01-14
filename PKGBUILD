@@ -9,21 +9,22 @@
 
 pkgname=apt-cacher-ng
 pkgver=3
-pkgrel=2
+pkgrel=3
+pkgfix=1
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 license=('custom')
 depends=('zlib' 'bzip2' 'fuse' 'xz' 'openssl' 'libwrap')
 makedepends=('cmake')
-source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.${pkgrel}.orig.tar.xz"
+source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${pkgver}.${pkgrel}.${pkgfix}.orig.tar.xz"
         'acng.conf.patch'
         'apt-cacher-ng.service.patch'
         'apt-cacher-ng.tmpfile'
 )
 
 backup=('etc/apt-cacher-ng/acng.conf')
-md5sums=('452f694d127705b9834c9d46fe1f559f'
+md5sums=('cc673b249a72562969089512e85396d6'
          '180e14417a70642a53c77bcb6a7b7292'
          '9645bdcd30a6b0ddc956c2a48c7a27ff'
          '29979b8064ff52aa24017b42c37e6bfb')
