@@ -1,6 +1,6 @@
 --- systemd/apt-cacher-ng.service	2014-10-20 22:44:16.000000000 +0200
 +++ systemd/apt-cacher-ng.service.arch	2014-11-03 12:55:24.633172795 +0100
-@@ -10,6 +10,6 @@
+@@ -9,7 +9,7 @@
  
  [Service]
  # the SocketPath option can be removed if the inetd bridge functionality is not needed
