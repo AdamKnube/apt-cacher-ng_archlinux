@@ -25,7 +25,7 @@ source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${
 backup=('etc/apt-cacher-ng/acng.conf')
 md5sums=('cc673b249a72562969089512e85396d6'
          '605df6eb185f688fc992f61fee05a4a1'
-         '5cb5b306e53dc67447440bf234e64b4b'
+         '4a9e0e362fdb3c1e17f0ae0c1de9e47e'
          '29979b8064ff52aa24017b42c37e6bfb')
 
 install=apt-cacher-ng.install
